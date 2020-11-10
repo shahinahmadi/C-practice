@@ -1,0 +1,119 @@
+// test.cpp
+//
+// Code to test Polynomial class
+//
+
+
+
+#include "Polynomial.h"
+
+#include <iostream>
+#include <complex>
+#include <vector>
+#include<cmath>
+
+using namespace std;
+
+
+void print_roots( vector< complex< double > > v ){
+  cout<<v.size()<<" Roots:"<<endl;
+  for ( int i=0; i<v.size(); ++i ){
+    cout<<"\t"<<v[i]<<endl;
+  }
+}
+
+int main(){
+  
+  Polynomial p90;
+  p90.print_parameters();
+
+  vector<double> a1{ -6.0, -5.0, 2.0, 1.0 };
+  Polynomial p1( a1 );
+  p1.print_parameters();
+
+  Polynomial p11( p1 );
+  p11.print_parameters();
+  
+  Polynomial p2;
+  vector<double> a2{ -7412.0, -1505.0, -20.0, -10.0, 1.0 };
+  p2.set_parameters( a2 );
+  p2.print_parameters();
+  
+  Polynomial p3;
+  vector<double> a3{ -7412.0, -1505.0, -20.0, -10.0, 1.0 };
+  p3.set_parameters( a3 );
+  p3.print_parameters();
+
+  /*Polynomial p4;
+  double a4=1;
+  p4.set_parameter(0,a4);
+  p4.print_parameters();*/
+
+  Polynomial p5;
+  vector <double> a5{-6.0,-5.0,2.0,1.0};
+  p5.set_parameters(a5);
+  p5.print_parameters();
+  double integral=numerical_integrate(p5,0,4);
+  cout << "The integral result is " << integral << endl;
+
+  Polynomial p6;
+  vector<double> a6{ -6.0, -5.0, 2.0, 1.0};
+  p6.set_parameters(a6);
+  cout<<p6<<endl;
+
+  Polynomial p7;
+  vector <double> a7{-6.0,-5.0,2.0,1.0};
+  p7.set_parameters(a7);
+  double analytical_integral=p7.analytical_integrate(0.0,4);
+  cout << "The analytical_integral result is " << analytical_integral << endl;
+
+ Polynomial p8;
+ vector <double> a8{-6.0,-5.0,2.0,1.0};
+ p8.set_parameters(a8);
+ complex<double> deriv=p8.Derivative(6);
+ cout << "The derivative is " << deriv << endl;
+
+ Polynomial p9;
+ vector <double> a9{5,5,5,5,5,5,5,5};
+ p9.set_parameters(a9);
+ Polynomial derivative1=p9.derivative();
+ cout<< "The derivative is"<< derivative1<< endl;
+ 
+
+
+
+  
+
+  
+  //cout<<"Polynomial 1 : "<<p1<<endl;
+  //cout<<"Polynomial 2 : "<<p2<<endl;
+  //cout<<"Polynomial 3 : "<<p3<<endl;
+  //
+  // double igral1 = integrate( p1, 0.0, 4.0 );
+  //double igral2 = integrate( p2, 0.0, 4.0 );
+  //double igral3 = integrate( p3, 0.0, 4.0 );
+  //
+  //cout<<"Integral Polynomial 1 from 0 to 4 is "<<igral1<<endl;
+  //cout<<"Integral Polynomial 2 from 0 to 4 is "<<igral2<<endl;
+  //cout<<"Integral Polynomial 3 from 0 to 4 is "<<igral3<<endl;
+  //
+  //vector< complex<double> > r1 = find_roots( p1 );
+  //vector< complex<double> > r2 = find_roots( p2 );
+  //
+  //cout<<"Roots of Polynomial 1 has order "<<p1.get_order()<<endl;
+  //print_roots( r1 );
+  //
+  //cout<<"Roots of Polynomial 2 has order "<<p2.get_order()<<endl;
+  //print_roots( r2 );
+
+
+  //p3.set_parameter(7,1.0);
+  //cout<<"Polynomial 3 :"<<p3<<endl;
+
+  //cout<<"Roots of Polynomial 3 has order "<<p3.get_order()<<endl;
+  //vector< complex<double> > r3 = find_roots( p3 );
+  //print_roots( r3 );
+  
+  
+  return 0;  
+}
